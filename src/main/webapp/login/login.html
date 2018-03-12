@@ -1,22 +1,45 @@
 <!Doctype html>
-<html>
-<head>
-<title>My Profile</title>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="Venkata Sai Kiran Thirthala">
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<html lang="EN">
 
-<!-- Custom styles for this template -->
-<link href="css/custom.css" rel="stylesheet">
-</head>
-<body>
-<label>UserId</label>
-<input/>
-<label>Password</label>
-<input type="password"/>
-</body>
+
+<div class="row">
+	<div class="col-md-6">
+		<h1 class="my-4">Welcome to My Profile!</h1>
+		<p>My idea is to share your profile with a URL instead of actual
+			document. Below are some of the benefits to use MyProfile.</p>
+		<ul>
+			<li>Saves space in your Email.</li>
+			<li>Avoid duplicate files.</li>
+			<li>Allow you to track number of views.</li>
+		</ul>
+	</div>
+	<div class="col-md-6">
+	<h4 class="my-4">Login</h4>
+		<div class="row">
+			<div class="card">
+				<div class="card-body">
+					<form id="loginForm">
+						<div class="form-group">
+							<label for="userId">User ID</label> <input type="email"
+								class="form-control" id="userID" aria-describedby="emailHelp"
+								placeholder="User ID">
+						</div>
+						<div class="form-group">
+							<label for="passwordInput">Password</label> <input
+								type="password" class="form-control" id="passwordInput"
+								placeholder="Password">
+						</div>
+						<div class="form-group">
+							<p>
+								Don't have an account? <a href="signup/signup.html">Sign up!</a>
+							</p>
+						</div>
+						<button type="submit" class="btn btn-primary">Login</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 </html>
