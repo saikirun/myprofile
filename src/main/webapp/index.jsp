@@ -8,13 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+	<link rel="shortcut icon" href="assets/images/favicon.ico"/>
+	
     <title>My Profile</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
 
   </head>
 
@@ -37,8 +39,8 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 
   </body>
 </html>
