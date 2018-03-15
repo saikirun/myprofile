@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
 
-  <head>
+  <h:head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,29 +23,29 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/custom.css" rel="stylesheet">
 
-  </head>
+  </h:head>
 
-  <body>
+  <h:body>
 
     <!-- Navigation -->
-	<%@include file="layout/topNav.html" %>
+	<ui:include src="layout/topNav.html" />
 
     <!-- Page Content -->
     <div class="container">
 
-      <%@include file="login/login.html" %>
+      <ui:include src="login/login.html" />
 
     </div>
     <!-- /.container -->
 
     <!-- Footer -->
     <div class="footer">
-    	<%@include file="layout/footer.html" %>
+    	<ui:include src="layout/footer.html" />
     </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="assets/js/jquery-3.3.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 
-  </body>
+  </h:body>
 </html>
