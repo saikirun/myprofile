@@ -22,6 +22,7 @@ CREATE TABLE MP_SIGNUP
 	PHONE_NUM varchar(15),
 	COUNTRY_ID varchar(3) NOT NULL,
 	ACTIVATION_CODE varchar(100) NOT NULL,
+	STATUS int(1),
 	PRIMARY KEY (EMAIL_ID)
 );
 
@@ -43,7 +44,16 @@ CREATE TABLE MP_USER
 
 CREATE TABLE MP_USER_BASIC_INFO
 (
-	USER_ID varchar(200) NOT NULL
+	USER_ID varchar(200) NOT NULL,
+	FIRST_NAME varchar(100) NOT NULL,
+	LAST_NAME varchar(100) NOT NULL,
+	PHONE_NUM varchar(15),
+	ADDRESS_LINE_ONE varchar(200),
+	ADDRESS_LINE_TWO varchar(200),
+	COUNTRY_ID varchar(3),
+	STATE varchar(2),
+	CITY varchar(100),
+	ZIP int(10)
 );
 
 

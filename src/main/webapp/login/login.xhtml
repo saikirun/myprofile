@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition>
+	<!-- Navigation -->
+	<ui:include src="/WEB-INF/layout/topNav.xhtml" />
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h1 class="my-4">Welcome to My Profile!</h1>
+				<p>My idea is to share your profile with a URL instead of actual
+					document. Below are some of the benefits to use MyProfile.</p>
+				<ul>
+					<li>Saves space in your Email.</li>
+					<li>Avoid duplicate files.</li>
+					<li>Allow you to track number of views.</li>
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<h4 class="my-4">Login</h4>
+				<div class="row">
+					<div class="card">
+						<div class="card-body">
+							<h:form id="loginForm">
+								<div class="form-group">
+									<label for="userId">User ID</label>
+									<h:inputText type="email" styleClass="form-control" id="userID"
+										aria-describedby="emailHelp" placeholder="User ID" />
+								</div>
+								<div class="form-group">
+									<label for="passwordInput">Password</label>
+									<h:inputSecret type="password" styleClass="form-control"
+										id="passwordInput" placeholder="Password" />
+								</div>
+								<div class="form-group">
+									<p>
+										Don't have an account?
+										<h:commandLink action="#{SignupCntrl.redirectToSignupPage}">Sign
+											up!</h:commandLink>
+									</p>
+								</div>
+								<h:commandButton styleClass="btn btn-primary"
+									action="#{LoginCntrl.loginAction}" value="Login" />
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<div class="footer">
+		<ui:include src="/WEB-INF/layout/footer.xhtml" />
+	</div>
+</ui:composition>
+</html>
