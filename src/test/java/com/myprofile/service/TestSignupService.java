@@ -7,6 +7,8 @@ package com.myprofile.service;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 
@@ -24,14 +26,27 @@ public class TestSignupService
     // ----------------------------------------------------- Static Initializers
     // ------------------------------------------------------ Instance Variables
     @Autowired
-    private SignupService signupService;
+    private UserService userService;
+    
+    @Autowired
+    private JavaMailSenderImpl mailSender;
 
     // ------------------------------------------------------------ Constructors
     // ---------------------------------------------------------- Public Methods
     @Test
     public void testSignup() {
-        Signup signup = signupService.getAllByEmailId("sg@gmail.com");
+        Signup signup = userService.getByEmailId("test@gmail.com");
         Assert.assertNull(signup);
+    }
+    
+    @Test
+    public void testEmailSender(){
+//        SimpleMailMessage message = new SimpleMailMessage();
+//        message.setTo("kirun5535@gmail.com");
+//        message.setSubject("Test myprofile");
+//        message.setText("Test Myprofile service body");
+//        message.setFrom("kirun6149@gmail.com");
+//        mailSender.send(message);
     }
     // ------------------------------------------------------- Protected Methods
     // --------------------------------------------------------- Default Methods

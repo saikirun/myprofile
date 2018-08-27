@@ -5,10 +5,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<ui:composition>
-	<!-- Navigation -->
-	<ui:include src="/WEB-INF/layout/topNav.xhtml" />
-
+<ui:composition template="/WEB-INF/layout/mainLayout.xhtml">
+<ui:define name="content">
 	<!-- Page Content -->
 	<div class="container">
 		<div class="row">
@@ -27,16 +25,17 @@
 				<div class="row">
 					<div class="card">
 						<div class="card-body">
+						<h:messages globalOnly="true" infoClass=""/>
 							<h:form id="loginForm">
 								<div class="form-group">
 									<label for="userId">User ID</label>
-									<h:inputText type="email" styleClass="form-control" id="userID"
-										aria-describedby="emailHelp" placeholder="User ID" />
+									<h:inputText type="email" styleClass="form-control" id="userID" aria-describedby="userId"
+										placeholder="User ID" value="#{User.userId}"/>
 								</div>
 								<div class="form-group">
 									<label for="passwordInput">Password</label>
-									<h:inputSecret type="password" styleClass="form-control"
-										id="passwordInput" placeholder="Password" />
+									<h:inputSecret type="password" styleClass="form-control" aria-describedby="password"
+										id="passwordInput" placeholder="Password" value="#{User.password}" />
 								</div>
 								<div class="form-group">
 									<p>
@@ -55,10 +54,6 @@
 		</div>
 	</div>
 	<!-- /.container -->
-
-	<!-- Footer -->
-	<div class="footer">
-		<ui:include src="/WEB-INF/layout/footer.xhtml" />
-	</div>
+	</ui:define>
 </ui:composition>
 </html>

@@ -32,6 +32,25 @@
 			</bean>
 		</property>
 	</bean>
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="kirun6149@gmail.com" />
+		<property name="password" value="Lightes92" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from" value="1992sai@gmail.com" />
+		<property name="subject" value="Myprofile Activation code" />
+	</bean>
+	<bean id="freemarkerConfig" name="freemarkerConfig" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean"/>
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 		<property name="dataSource" ref="dataSource" />
@@ -41,7 +60,8 @@
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 	<bean
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-	<bean name="signupService" id="signupService"
-		class="com.myprofile.service.SignupService">
+	<bean name="userService" id="userService" class="com.myprofile.service.UserService">
 	</bean>
+	<bean id="bCryptPasswordEncoder" name="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	<bean id="emailServiceImpl" name="emailServiceImpl" class="com.myprofile.service.EmailServiceImpl" />
 </beans>

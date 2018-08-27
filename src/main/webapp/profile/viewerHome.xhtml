@@ -13,29 +13,22 @@
 	<ui:define name="content">
 		<div class="container-fluid">
 			<div class="row pt-3">
-				<div class="col-8">
+				<div class="col-9">
 					<div class="card">
-						<div class="card-header">
-							<h5 class="card-title">Your Profile</h5>
-						</div>
 						<div class="card-body">
 							<iframe
 								src="http://docs.google.com/gview?url=C:\Users\venkatasaikiran\Downloads\H1-B Documents\venkataSaiKiranThirthala_Resume.docx"></iframe>
 						</div>
 					</div>
 				</div>
-				<div class="col-4">
+				<div class="col-3">
 					<div class="card">
 						<div class="card-header">
-							<h5 class="card-title">Upload your Profile</h5>
+							<h5 class="card-title">Contact Information</h5>
 						</div>
 						<div class="card-body">
-							<h:form enctype="multipart/form-data">
-							<h:inputFile id="inputFile" value="#{FileUploader.file}" validator="#{FileUploader.validateFile}">
-							</h:inputFile>
-								<h:commandButton value="Upload" action="#{FileUploader.uploadProfile}"
-									styleClass="btn btn-secondary btn-sm" />
-									<h:message for="inputFile"></h:message>
+							<h:form>
+								<h:outputText>first name</h:outputText>
 							</h:form>
 						</div>
 					</div>

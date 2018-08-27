@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/WEB-INF/layout/mainLayout.xhtml">
+<ui:define name="topNav">
+		<!-- Navigation -->
+		<ui:include src="/WEB-INF/layout/topNav.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col-10 mt-4">
+					<div class="card">
+						<div class="card-body">
+								<h:form id="basicInfoForm">
+									<div class="form-group">
+										<label for="firstName">First Name</label>
+										<h:outputText value="#{UserBasicInfo.firstName}"
+											id="firstName" />
+									</div>
+									<div class="form-group">
+										<label for="lastName">Last Name</label>
+										<h:outputText value="#{UserBasicInfo.lastName}"
+											id="lastName" />
+									</div>
+									<div class="form-group">
+										<label for="userId">User ID</label>
+										<h:outputText value="#{UserBasicInfo.userId}"
+											id="userID" />
+									</div>
+									<div class="form-group">
+										<label for="address1">Address Line 1</label>
+										<h:outputText value="#{UserBasicInfo.addressOne}"
+											id="address1" />
+									</div>
+									<div class="form-group">
+										<label for="address2">Address Line 2</label>
+										<h:outputText value="#{UserBasicInfo.addressTwo}"
+											id="address2" />
+									</div>
+									<div class="form-group">
+										<label for="city">City</label>
+										<h:outputText value="#{UserBasicInfo.city}"
+											id="city" />
+									</div>
+									<div class="form-group">
+										<label for="state">State</label>
+										<h:outputText value="#{UserBasicInfo.state}"
+											id="state" />
+									</div>
+									<div class="form-group">
+										<label for="zip">Zip code</label>
+										<h:outputText value="#{UserBasicInfo.zip}"
+											id="zip" />
+									</div>
+									<div class="form-group">
+										<label for="country">Country</label>
+										<h:outputText value="#{UserBasicInfo.country}"
+											id="country" />
+									</div>
+									<h:commandLink value="Edit" styleClass="text-primary"
+										action="#{SignupCntrl.signupAction}" />
+								</h:form>
+						</div>
+					</div>
+				</div>
+				<div class="col-2 mt-4">
+					<div class="card">
+						<div class="card-body">
+						<h5>Profile Image</h5>
+						</div>
+						</div>
+						</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

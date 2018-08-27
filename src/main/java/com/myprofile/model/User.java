@@ -6,6 +6,7 @@ package com.myprofile.model;
 
 import java.util.Date;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ import org.springframework.data.annotation.CreatedDate;
  * @author venkatasaikiran
  * @date Mar 24, 2018 6:47:23 PM
  */
+@ManagedBean(name="User")
 @Entity
 @Table(name = "mp_user")
 public class User {
@@ -31,14 +33,20 @@ public class User {
     @Id
     @Column(name = "USER_ID")
     public String userId;
+    
     @Column(name = "PASSWORD")
     public String password;
+    
     @Column(name = "STATUS")
     public int status;
+    
     @Column(name = "LAST_LOGIN_DT", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     public Date lastLoginDate;
+    
+    @Column(name = "ROLE")
+    public int role;
 
     public String getUserId() {
         return userId;
@@ -71,6 +79,16 @@ public class User {
     public void setLastLoginDate(Date lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+    
+    
     // ------------------------------------------------------- Protected Methods
     // --------------------------------------------------------- Default Methods
     // --------------------------------------------------------- Private Methods

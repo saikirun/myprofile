@@ -25,7 +25,7 @@ public class BaseCntrl {
         fc.getApplication().getNavigationHandler().handleNavigation(fc, null,
                 pageName);
     }
-
+    
     public void addObjectToSession(Object obj, String sessionId) {
         FacesContext fc = FacesContext.getCurrentInstance();
         if (fc == null || fc.getExternalContext() == null

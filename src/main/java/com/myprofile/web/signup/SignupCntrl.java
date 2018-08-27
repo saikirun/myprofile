@@ -31,4 +31,9 @@ public class SignupCntrl extends BaseCntrl {
         Signup signup = getSignup();
         return SignupWebHelper.getInstance().signupAction(signup);
     }
+    
+    public void verificationCodeAction(){
+        Signup signup = getSignup();
+        SignupWebHelper.getInstance().verifyActivationCode(signup);
+    }
 }

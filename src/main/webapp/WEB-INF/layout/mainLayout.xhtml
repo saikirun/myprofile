@@ -29,6 +29,11 @@
 
 </h:head>
 <h:body>
+	<ui:insert name="topNav"/>
 	<ui:insert name="content" />
+	<!-- Footer -->
+		<div class="footer">
+			<ui:include src="/WEB-INF/layout/footer.xhtml" />
+		</div>
 </h:body>
 </html>

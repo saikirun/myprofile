@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.myprofile.model.User;
 import com.myprofile.repository.UserResource;
 import com.myprofile.web.base.BaseCntrl;
+import com.myprofile.web.login.helper.LoginWebHelper;
 
 /**
  * @author Shanmu
@@ -23,20 +24,10 @@ public class LoginCntrl extends BaseCntrl {
     @Autowired
     UserResource userResource;
 
-    public void loginAction() {
-        String redirectPage = "";
+    public String loginAction() {
         /** get values from session(userId, pswd) */
+        User user = getUser();
         /** pass values to serviceLayer and fetch data */
-        /** if null, send message and return */
-        /**
-         * else check for basic info by passing userId to UserBasicInfo Entity
-         */
-        /** if(null) set redirectPage to "basicInfoSetup" */
-        /** else set redirectPage to "home" */
-        forwardFromEvent(redirectPage);
-    }
-
-    public User findUser(String userId) {
-        return userResource.findByUserId(userId);
+        return LoginWebHelper.getInstance().loginAction(user);
     }
 }

@@ -7,8 +7,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="/WEB-INF/layout/mainLayout.xhtml">
 	<ui:define name="content">
-		<!-- Navigation -->
-		<ui:include src="/WEB-INF/layout/topNav.xhtml" />
 		<div class="container">
 			<div class="row justify-content-md-center">
 				<div class="col-6 m-5">
@@ -16,13 +14,6 @@
 						<div class="card-body">
 							<div class="col-8">
 								<h:form id="SignupForm">
-									<div class="form-group">
-										<label for="emailId">Email ID</label>
-										<h:inputText type="email" value="#{Signup.emailId}"
-											class="form-control" id="emailID"
-											aria-describedby="emailHelp" required="true"
-											placeholder="User ID" />
-									</div>
 									<div class="form-group">
 										<label for="firstName">First Name</label>
 										<h:inputText value="#{Signup.firstName}" class="form-control"
@@ -36,16 +27,17 @@
 											placeholder="Last Name" />
 									</div>
 									<div class="form-group">
-										<label for="phoneNum">Phone Number</label>
-										<h:inputText value="#{Signup.phoneNum}" class="form-control"
-											id="phoneNum" aria-describedby="phoneNum" required="true"
-											placeholder="Phone Number" />
+										<label for="emailId">Email ID</label>
+										<h:inputText type="email" value="#{Signup.emailId}"
+											class="form-control" id="emailID"
+											aria-describedby="emailHelp" required="true"
+											placeholder="User ID" />
 									</div>
 									<div class="form-group">
-										<label for="country">Country</label>
-										<h:inputText value="#{Signup.country}" class="form-control"
-											id="country" aria-describedby="country" required="true"
-											placeholder="Country" />
+										<label for="passwordInput">Create Password</label>
+										<h:inputSecret type="password" styleClass="form-control"
+											id="passwordInput" placeholder="Create Password"
+											value="#{Signup.password}" required="true" />
 									</div>
 									<h:commandButton value="SignUp" styleClass="btn btn-primary"
 										action="#{SignupCntrl.signupAction}" />
