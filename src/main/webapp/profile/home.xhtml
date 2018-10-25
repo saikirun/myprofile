@@ -11,33 +11,60 @@
 		<ui:include src="/WEB-INF/layout/topNav.xhtml" />
 	</ui:define>
 	<ui:define name="content">
-		<div class="container-fluid">
-			<div class="row pt-3">
-				<div class="col-8">
-					<div class="card">
-						<div class="card-header">
-							<h5 class="card-title">Your Profile</h5>
-						</div>
-						<div class="card-body">
-							<iframe
-								src="http://docs.google.com/gview?url=C:\Users\venkatasaikiran\Downloads\H1-B Documents\venkataSaiKiranThirthala_Resume.docx"></iframe>
-						</div>
+		<div class="row">
+			<div class="col-8">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Your Profile</h5>
+					</div>
+					<div class="card-body">
+					 <!-- <iframe src="http://docs.google.com/gview?url=http://#{FileUploadCntrl.profileLink}&amp;embedded=true"/> -->
+						<iframe
+							src="http://docs.google.com/gview?url=https://0faab02bd5de6df39965-aec5376da7dc52a52035b47ef0d8346d.ssl.cf2.rackcdn.com/DO_190_20181009124936_1201DnLoad.docx&amp;embedded=true" />
+					<!-- <iframe
+							src='https://view.officeapps.live.com/op/embed.aspx?src=https://0faab02bd5de6df39965-aec5376da7dc52a52035b47ef0d8346d.ssl.cf2.rackcdn.com/DO_190_20181009124936_1201DnLoad.docx'
+							width='1366px' frameborder='0'>
+							This is an embedded <a target='_blank' href='http://office.com'>Microsoft
+								Office</a> document, powered by <a target='_blank'
+								href='http://office.com/webapps'>Office Online</a>.
+						</iframe> -->
 					</div>
 				</div>
-				<div class="col-4">
-					<div class="card">
-						<div class="card-header">
-							<h5 class="card-title">Upload your Profile</h5>
-						</div>
-						<div class="card-body">
-							<h:form enctype="multipart/form-data">
-							<h:inputFile id="inputFile" value="#{FileUploader.file}" validator="#{FileUploader.validateFile}">
-							</h:inputFile>
-								<h:commandButton value="Upload" action="#{FileUploader.uploadProfile}"
-									styleClass="btn btn-secondary btn-sm" />
-									<h:message for="inputFile"></h:message>
-							</h:form>
-						</div>
+			</div>
+			<div class="col-4">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Upload your Profile</h5>
+					</div>
+					<div class="card-body">
+					<h:messages globalOnly="true"/>
+						<h:form enctype="multipart/form-data">
+							<h:inputFile id="inputFile" value="#{FileUploadCntrl.file}"
+								validator="#{FileUploadCntrl.validateProfile}"/>
+							<h:commandButton value="Upload"
+								action="#{FileUploadCntrl.uploadProfile}"
+								styleClass="btn btn-secondary btn-sm" />
+							<h:message for="inputFile"></h:message>
+							<h:commandButton styleClass="btn btn-primary btn-sm"
+								value="Download" action="#{FileUploadCntrl.getProfile}" />
+						</h:form>
+						<h:form>
+							<h4 class="card-title">Share your profile link :</h4>
+							<h:outputLabel rendered="true" value="http://localhost:8080/myprofile/ygjhvhvjbb"/>
+							
+						</h:form>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title">Tracker Information</h5>
+					</div>
+					<div class="card-body">
+						<h:form>
+							<h:outputLabel>Total view's: </h:outputLabel>
+							<h:outputText value="&nbsp;#{UserTrackerCntrl.totalViews}"/>
+							<h:commandLink styleClass="text-primary float-right" value="more" action="#{UserTrackerCntrl.forwardToPage}"/>
+						</h:form>
 					</div>
 				</div>
 			</div>

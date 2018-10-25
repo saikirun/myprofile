@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -28,8 +29,9 @@ public class UserProfile {
     @Column(name = "USER_ID")
     private String userId;
     
+    @Lob
     @Column(name = "PROFILE")
-    private long profile;
+    private byte[] profile;
     
     @Column(name = "TRACKING_CODE")
     private String trackingCode;
@@ -45,11 +47,11 @@ public class UserProfile {
         this.userId = userId;
     }
 
-    public long getProfile() {
+    public byte[] getProfile() {
         return profile;
     }
 
-    public void setProfile(long profile) {
+    public void setProfile(byte[] profile) {
         this.profile = profile;
     }
 

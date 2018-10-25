@@ -4,6 +4,8 @@
  */
 package com.myprofile.repository;
 
+import java.util.ArrayList;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,6 +23,9 @@ public interface UserProfileTrackerResource extends JpaRepository<UserProfileTra
     //--------------------------------------------------------- Class Variables
     @Query(" from UserProfileTracker u where lower(u.userId) = lower (:userId)")
     public UserProfileTracker findByUserId(@Param("userId") String userId);
+    
+    @Query(" from UserProfileTracker u where lower(u.userId) = lower (:userId) order by u.linkAccessedDate desc")
+    public ArrayList<UserProfileTracker> findAllByUserId(@Param("userId") String userId);
     //----------------------------------------------------- Static Initializers
     //------------------------------------------------------ Instance Variables
     //------------------------------------------------------------ Constructors

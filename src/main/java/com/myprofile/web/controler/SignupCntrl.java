@@ -2,13 +2,13 @@
  * All Rights Reserved. Private and Confidential. May not be disclosed without
  * permission.
  */
-package com.myprofile.web.signup;
+package com.myprofile.web.controler;
 
 import javax.faces.bean.ManagedBean;
 
 import com.myprofile.model.Signup;
 import com.myprofile.web.base.BaseCntrl;
-import com.myprofile.web.signup.helper.SignupWebHelper;
+import com.myprofile.web.helper.SignupWebHelper;
 
 /**
  * @author venkatasaikiran

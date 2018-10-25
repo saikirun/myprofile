@@ -4,6 +4,7 @@
  */
 package com.myprofile.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.mail.MessagingException;
@@ -14,7 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.myprofile.model.Signup;
 import com.myprofile.model.User;
+import com.myprofile.model.UserBasicInfo;
+import com.myprofile.model.UserProfile;
+import com.myprofile.model.UserProfileTracker;
 import com.myprofile.repository.SignupResource;
+import com.myprofile.repository.UserBascInfoResource;
+import com.myprofile.repository.UserProfileResource;
+import com.myprofile.repository.UserProfileTrackerResource;
 import com.myprofile.repository.UserResource;
 import com.myprofile.web.util.RandomCodeGenerator;
 
@@ -33,6 +40,15 @@ public class UserService {
     
     @Autowired
     UserResource userResource;
+    
+    @Autowired
+    UserProfileResource userProfileResource;
+    
+    @Autowired
+    UserProfileTrackerResource userProfileTrackerResource;
+    
+    @Autowired
+    UserBascInfoResource userBasicInfoResource;
     
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -79,6 +95,30 @@ public class UserService {
         return userResource.save(userList);
     }
     
+    public UserBasicInfo findUserBasicInfo(String userId) {
+        return userBasicInfoResource.findByUserId(userId);
+    }
+    
+    public UserBasicInfo saveUserBasicInfo(UserBasicInfo userBasicInfo) {
+        return userBasicInfoResource.save(userBasicInfo);
+    }
+    
+    public UserProfile findUserProfile(String userId) {
+        return userProfileResource.findByUserId(userId);
+    }
+    
+    public UserProfile saveUserProfile(UserProfile userProfile) {
+        return userProfileResource.save(userProfile);
+    }
+    
+    public ArrayList<UserProfileTracker> getTrackerInfo(String userId){
+        return userProfileTrackerResource.findAllByUserId(userId);
+    }
+    
+    public UserProfileTracker saveUserProfileTracker(UserProfileTracker userProfileTracker) {
+        return userProfileTrackerResource.save(userProfileTracker);
+    }
+    
     @Transactional
     public void activateUser(Signup signupUser){
         signupUser.setStatus(1);
@@ -92,6 +132,10 @@ public class UserService {
         user.setLastLoginDate(Calendar.getInstance().getTime());
         
         userResource.save(user);
+    }
+    
+    public String updateUserAction() {
+        return "accountBasicInfo";
     }
     // ------------------------------------------------------- Protected Methods
     // --------------------------------------------------------- Default Methods

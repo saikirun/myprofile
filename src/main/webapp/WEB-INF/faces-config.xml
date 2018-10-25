@@ -7,12 +7,17 @@
 	<managed-bean>
 		<managed-bean-name>user</managed-bean-name>
 		<managed-bean-class>com.myprofile.model.User</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userBasicInfo</managed-bean-name>
+		<managed-bean-class>com.myprofile.model.UserBasicInfo</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>signup</managed-bean-name>
 		<managed-bean-class>com.myprofile.model.Signup</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
   
   <navigation-rule>
@@ -30,8 +35,24 @@
   		<to-view-id>/profile/home.jsf</to-view-id>
   	</navigation-case>
   	<navigation-case>
+  		<from-outcome>trackerInfo</from-outcome>
+  		<to-view-id>/profile/trackerInfo.jsf</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>viewerHome</from-outcome>
+  		<to-view-id>/viiewer/viewerHome.jsf</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
   		<from-outcome>verifyAccount</from-outcome>
   		<to-view-id>/signup/verifyAccount.jsf</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>updateAccountBasicInfo</from-outcome>
+  		<to-view-id>/profile/updateAccountBasicInfo.jsf</to-view-id>
+  	</navigation-case>
+  	<navigation-case>
+  		<from-outcome>accountBasicInfo</from-outcome>
+  		<to-view-id>/profile/accountBasicInfo.jsf</to-view-id>
   	</navigation-case>
   </navigation-rule>
 </faces-config>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:composition template="/WEB-INF/layout/mainLayout.xhtml">
+	<ui:define name="topNav">
+		<!-- Navigation -->
+		<ui:include src="/WEB-INF/layout/topNav.xhtml" />
+	</ui:define>
+	<ui:define name="content">
+		<div class="row col-12 justify-content-md-center">
+			<div class="col-6">
+				<div class="card">
+					<div class="card-body">
+						<h:form id="updateBasicInfoForm">
+							<div class="form-group row">
+								<label class="col-4" for="firstName">First Name</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.firstName}" id="firstName" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="lastName">Last Name</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.lastName}" id="lastName" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="gender">Gender</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.gender}" id="gender" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="phone">Phone</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.phoneNum}" id="phone" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="address1">Address Line 1</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.addressOne}" id="address1" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="address2">Address Line 2</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.addressTwo}" id="address2" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="city">City</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.city}" id="city" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="state">State</label>
+								<div class="col-8">
+									<h:selectOneMenu value="#{UserBasicInfo.state}" id="state" >
+										<f:selectItems value="#{UserInfoCntrl.usStatesList}" var="state" itemValue="#{state.Value}" itemLabel="#{state.Key}"/>
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="zip">Zip code</label>
+								<div class="col-8">
+									<h:inputText value="#{UserBasicInfo.zip}" id="zip">
+									</h:inputText>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-4" for="country">Country</label>
+								<div class="col-8">
+									<h:selectOneMenu value="#{UserBasicInfo.country}" id="country" >
+										<f:selectItem itemValue="US" itemLabel="United States"/>
+										<f:selectItems value="#{UserInfoCntrl.countryList}" var="country" itemValue="#{country.Value}" itemLabel="#{country.Key}"/>
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<h:commandButton value="Save"
+								styleClass="text-primary float-right"
+								action="#{UserInfoCntrl.updateAccount}" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card">
+					<div class="card-body">
+						<h5>Profile Image</h5>
+						<h:form enctype="multipart/form-data">
+						<h:graphicImage value="/image/?Id=#{User.userId}" rendered="#{UserInfoCntrl.userImageAvailable}" styleClass="headerProfileImage rounded-circle"/>
+						<h:panelGroup rendered="#{!UserInfoCntrl.userImageAvailable}">
+							<img src="/myprofile/resources/images/user-profile-icon.png"
+								alt="Profile Image" class="rounded-circle" />
+								</h:panelGroup>
+							<h:inputFile id="profileImage" value="#{FileUploadCntrl.file}"
+								validator="#{FileUploadCntrl.validateImageUpload}" />
+							<h:commandButton value="Upload"
+								action="#{FileUploadCntrl.uploadProfileImage}"
+								styleClass="btn btn-secondary btn-sm" />
+							<h:message for="profileImage"></h:message>
+						</h:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

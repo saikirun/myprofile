@@ -2,9 +2,10 @@
  *  All Rights Reserved.
  *  Private and Confidential. May not be disclosed without permission.
  */
-package com.myprofile.web.login.helper;
+package com.myprofile.web.helper;
 
 import com.myprofile.model.User;
+import com.myprofile.model.UserBasicInfo;
 import com.myprofile.service.UserService;
 import com.myprofile.web.base.BaseWebHelper;
 
@@ -25,6 +26,7 @@ public class LoginWebHelper extends BaseWebHelper{
     //---------------------------------------------------------- Public Methods
     public String loginAction(User user){
         User userList = null;
+        UserBasicInfo userBasicInfo = null;
         
         UserService userService = getUserService();
         try {
@@ -44,6 +46,17 @@ public class LoginWebHelper extends BaseWebHelper{
         /**
          * else check for basic info by passing userId to UserBasicInfo Entity
          */
+            
+            try {
+                userBasicInfo = userService.findUserBasicInfo(userList.getUserId());
+                if(userBasicInfo == null) {
+                    userBasicInfo = new UserBasicInfo();
+                    userBasicInfo.setUserId(user.getUserId());
+                    return "updateAccountBasicInfo";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         /** else set redirectPage to "home" */
         return "home";
     }

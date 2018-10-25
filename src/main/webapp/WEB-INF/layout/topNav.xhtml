@@ -8,7 +8,11 @@
 	<h:form>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#">My Profile</a>
+		<h:commandLink styleClass="navbar-brand" value="My Profile" action="#{LoginCntrl.redirectToHomePage}"/>
+		<h:graphicImage value="/image/?Id=#{User.userId}" styleClass="headerProfileImage rounded-circle" rendered="#{UserInfoCntrl.userImageAvailable}"/>
+		<h:panelGroup rendered="#{!UserInfoCntrl.userImageAvailable}">
+			<img src="/myprofile/resources/images/user-profile-icon.png" alt="Profile Image" class="headerProfileImage rounded-circle"/>
+		</h:panelGroup>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -16,11 +20,9 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">Contact</a>
+				<li class="nav-item"><h:commandLink styleClass="nav-link" value="User Profile" action="#{UserInfoCntrl.redirectToUserInfoAction}"/>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="#">User Profile</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="#">Logout</a>
+				<li class="nav-item"><h:commandLink styleClass="nav-link" value="Logout" action="#{LoginCntrl.logoutAction}"/>
 				</li>
 			</ul>
 		</div>

@@ -15,6 +15,7 @@ public class RandomCodeGenerator {
 
     //--------------------------------------------------------------- Constants
     public static final int CODE_GEN_SIZE = 5;
+    public static final int CODE_TRACKER_SIZE = 10;
     //--------------------------------------------------------- Class Variables
     //----------------------------------------------------- Static Initializers
     //------------------------------------------------------ Instance Variables
@@ -28,6 +29,10 @@ public class RandomCodeGenerator {
     public static String randomCodeGenerator(){
         
         return RandomStringUtils.random(CODE_GEN_SIZE, false, true);
+    }
+    
+    public static String randomCodeTrackerGenerator() {
+        return RandomStringUtils.random(CODE_TRACKER_SIZE, true, true);
     }
     //----------------------------------------------------------- Inner Classes
 }

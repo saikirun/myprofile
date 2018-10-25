@@ -30,7 +30,9 @@
 </h:head>
 <h:body>
 	<ui:insert name="topNav"/>
-	<ui:insert name="content" />
+	<div class="container-fluid mb-5 mt-4">
+		<ui:insert name="content" />
+	</div>
 	<!-- Footer -->
 		<div class="footer">
 			<ui:include src="/WEB-INF/layout/footer.xhtml" />

@@ -8,9 +8,8 @@
 <ui:composition template="/WEB-INF/layout/mainLayout.xhtml">
 <ui:define name="content">
 	<!-- Page Content -->
-	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<h1 class="my-4">Welcome to My Profile!</h1>
 				<p>My idea is to share your profile with a URL instead of actual
 					document. Below are some of the benefits to use MyProfile.</p>
@@ -20,7 +19,7 @@
 					<li>Allow you to track number of views.</li>
 				</ul>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<h4 class="my-4">Login</h4>
 				<div class="row">
 					<div class="card">
@@ -29,19 +28,25 @@
 							<h:form id="loginForm">
 								<div class="form-group">
 									<label for="userId">User ID</label>
-									<h:inputText type="email" styleClass="form-control" id="userID" aria-describedby="userId"
+									<h:inputText type="email" styleClass="form-control" id="j_username" aria-describedby="userId"
 										placeholder="User ID" value="#{User.userId}"/>
 								</div>
 								<div class="form-group">
-									<label for="passwordInput">Password</label>
+									<label for="password">Password</label>
 									<h:inputSecret type="password" styleClass="form-control" aria-describedby="password"
-										id="passwordInput" placeholder="Password" value="#{User.password}" />
+										id="j_password" placeholder="Password" value="#{User.password}" />
 								</div>
 								<div class="form-group">
 									<p>
 										Don't have an account?
 										<h:commandLink action="#{SignupCntrl.redirectToSignupPage}">Sign
 											up!</h:commandLink>
+									</p>
+								</div>
+								<div class="form-group">
+									<p>
+										Forgot password?
+										<h:commandLink action="#{LoginCntrl.redirectToForgotPswdPage}">Click here</h:commandLink>
 									</p>
 								</div>
 								<h:commandButton styleClass="btn btn-primary"
@@ -52,7 +57,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- /.container -->
 	</ui:define>
 </ui:composition>

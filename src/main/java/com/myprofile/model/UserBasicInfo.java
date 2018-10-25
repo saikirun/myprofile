@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +36,9 @@ public class UserBasicInfo {
     @Column(name = "LAST_NAME")
     private String lastName;
     
+    @Column(name = "GENDER")
+    private String gender;
+    
     @Column(name = "PHONE_NUM")
     private long phoneNum;
     
@@ -51,13 +55,14 @@ public class UserBasicInfo {
     private String state;
     
     @Column(name = "ZIP")
-    private int zip;
+    private String zip;
     
     @Column(name = "COUNTRY_ID")
     private String country;
     
+    @Lob
     @Column(name = "PROFILE_IMAGE")
-    private long profileImage;
+    private byte[] profileImage;
     
     //------------------------------------------------------------ Constructors
     //---------------------------------------------------------- Public Methods
@@ -78,6 +83,12 @@ public class UserBasicInfo {
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
     }
     public long getPhoneNum() {
         return phoneNum;
@@ -109,10 +120,10 @@ public class UserBasicInfo {
     public void setState(String state) {
         this.state = state;
     }
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
     public String getCountry() {
@@ -121,10 +132,10 @@ public class UserBasicInfo {
     public void setCountry(String country) {
         this.country = country;
     }
-    public long getProfileImage() {
+    public byte[] getProfileImage() {
         return profileImage;
     }
-    public void setProfileImage(long profileImage) {
+    public void setProfileImage(byte[] profileImage) {
         this.profileImage = profileImage;
     }
     

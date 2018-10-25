@@ -13,6 +13,10 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.myprofile.servcie" />
 	<jpa:repositories base-package="com.myprofile.repository" />
+<!-- 	<bean id="securityConfig"
+		class="com.myprofile.security.config.SecurityConfig">	
+	</bean> -->
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -26,7 +30,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-				<property name="showSql" value="true" />
+				<property name="showSql" value="false" />
 				<property name="generateDdl" value="false" />
 				<property name="database" value="MYSQL" />
 			</bean>

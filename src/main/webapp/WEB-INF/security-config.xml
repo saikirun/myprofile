@@ -6,21 +6,25 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 	<http auto-config="true">
-		<intercept-url  pattern="/profile/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url  pattern="/profile/**" access="hasRole('0')" />
+		<intercept-url  pattern="/index.jsf" access="permitAll" />
+		<intercept-url  pattern="/login/" access="permitAll" />
+		<intercept-url  pattern="/javax.faces.resources/**" access="permitAll" />
 		<form-login 
 		   login-page="/login/login.jsf" 
-		   login-processing-url="/login"
 		   username-parameter="userId"
 		   password-parameter="password"
 		   default-target-url="/profile/home"/>
 		<logout 
 		   logout-url="/" 
-		   logout-success-url="/index.jsf"/>  
+		   logout-success-url="/login/login.jsf"
+		   invalidate-session="true"
+           delete-cookies="JSESSIONID"/>  
 	</http>
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="kirun" password="test" authorities="ROLE_ADMIN" />
+				<user name="1992sai@gmail.com" password="test" authorities="0" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

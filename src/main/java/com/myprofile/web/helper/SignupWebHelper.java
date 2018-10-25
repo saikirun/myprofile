@@ -2,7 +2,7 @@
  * All Rights Reserved. Private and Confidential. May not be disclosed without
  * permission.
  */
-package com.myprofile.web.signup.helper;
+package com.myprofile.web.helper;
 
 import com.myprofile.model.Signup;
 import com.myprofile.service.UserService;

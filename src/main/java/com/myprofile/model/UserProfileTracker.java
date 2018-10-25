@@ -9,6 +9,8 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -27,8 +29,9 @@ public class UserProfileTracker {
     //----------------------------------------------------- Static Initializers
     //------------------------------------------------------ Instance Variables
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "TRACKING_ID")
-    private String trackingId;
+    private long trackingId;
     
     @Column(name = "IP_ADDRESS")
     private String ipAddress;
@@ -40,6 +43,39 @@ public class UserProfileTracker {
     private String userId;
     //------------------------------------------------------------ Constructors
     //---------------------------------------------------------- Public Methods
+
+    public long getTrackingId() {
+        return trackingId;
+    }
+
+    public void setTrackingId(long trackingId) {
+        this.trackingId = trackingId;
+    }
+
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public void setIpAddress(String ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
+    public Date getLinkAccessedDate() {
+        return linkAccessedDate;
+    }
+
+    public void setLinkAccessedDate(Date linkAccessedDate) {
+        this.linkAccessedDate = linkAccessedDate;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
     //------------------------------------------------------- Protected Methods
     //--------------------------------------------------------- Default Methods
     //--------------------------------------------------------- Private Methods

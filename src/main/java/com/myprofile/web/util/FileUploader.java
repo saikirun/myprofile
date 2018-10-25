@@ -4,7 +4,13 @@
  */
 package com.myprofile.web.util;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,9 +31,10 @@ import javax.servlet.http.Part;
 @ViewScoped
 public class FileUploader {
     // --------------------------------------------------------------- Constants
-    public static final int MAX_SIZE = 495120;
+    public static final int MAX_SIZE = Integer.MAX_VALUE;
     // --------------------------------------------------------- Class Variables
     // ----------------------------------------------------- Static Initializers
+    
     // ------------------------------------------------------ Instance Variables
     private Part file;
     private String fileContent;
@@ -51,10 +58,18 @@ public class FileUploader {
     }
 
     public void uploadProfile() {
-        if (fileContent != null) {
+        String rootPath = System.getProperty("catalina.home");
+        if (file != null) {
+            InputStream inputStream = null;
             try {
-                fileContent = new Scanner(file.getInputStream())
-                        .useDelimiter("\\A").next();
+                inputStream = file.getInputStream();
+                
+                Scanner sc = new Scanner(file.getInputStream());
+                fileContent = sc.useDelimiter("\\A").next();
+                sc.close();
+                inputStream.read(fileContent.getBytes());
+                inputStream.close();
+                Files.write(Paths.get(rootPath+file.getSubmittedFileName()), fileContent.getBytes(), StandardOpenOption.CREATE);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -64,11 +79,11 @@ public class FileUploader {
 
     public void validateFile(FacesContext ctx, UIComponent comp, Object value) {
         List<FacesMessage> msgs = new ArrayList<FacesMessage>();
-        Part file = (Part) value;
+        file = (Part) value;
         if (file == null) {
             msgs.add(new FacesMessage("Empty file can't be uploaded."));
         }
-        if (file.getSize() > 495120) {
+        if (file.getSize() > MAX_SIZE) {
             msgs.add(new FacesMessage(
                     "File size is" + file.getSize() + ". file too big"));
         }
@@ -79,6 +94,7 @@ public class FileUploader {
         if (!msgs.isEmpty()) {
             throw new ValidatorException(msgs);
         }
+        
     }
     // ------------------------------------------------------- Protected Methods
     // --------------------------------------------------------- Default Methods

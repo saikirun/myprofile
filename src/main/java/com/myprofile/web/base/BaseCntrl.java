@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 
 import com.myprofile.model.Signup;
 import com.myprofile.model.User;
+import com.myprofile.model.UserBasicInfo;
+import com.myprofile.model.UserProfile;
 
 /**
  * @author venkatasaikiran
@@ -52,6 +54,24 @@ public class BaseCntrl {
             addObjectToSession(user, "User");
         }
         return user;
+    }
+    
+    public UserProfile getUserProfile() {
+        UserProfile userProfile = (UserProfile) getObjectFromSession("UserProfile");
+        if (userProfile == null) {
+            userProfile = new UserProfile();
+            addObjectToSession(userProfile, "UserProfile");
+        }
+        return userProfile;
+    }
+    
+    public UserBasicInfo getUserBasicInfo() {
+        UserBasicInfo userBasicInfo = (UserBasicInfo) getObjectFromSession("UserBasicInfo");
+        if(userBasicInfo == null) {
+            userBasicInfo = new UserBasicInfo();
+            addObjectToSession(userBasicInfo, "UserBasicInfo");
+        }
+        return userBasicInfo;
     }
 
     public Signup getSignup() {
